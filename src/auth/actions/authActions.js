@@ -4,9 +4,10 @@ export function checkIsLogin() {
     return { type: ActionTypes.CHECKED_IS_LOGIN };
 }
 
-export function accessDenied() {
-    return { type: ActionTypes.ACCESS_DENIED };
+export function authenticated() {
+    return { type: ActionTypes.AUTH_USER };
 }
+
 
 export function signinUser({ username, password }) {
     return { type: ActionTypes.AUTH_USER, playload: {username, password} };
