@@ -4,14 +4,18 @@ export function checkIsLogin() {
     return { type: ActionTypes.CHECKED_IS_LOGIN };
 }
 
-export function authenticated() {
-    return { type: ActionTypes.AUTH_USER };
-}
-
-
 export function signinUser({ username, password }) {
-    return { type: ActionTypes.AUTH_USER, playload: {username, password} };
+    return { type: ActionTypes.SIGNIN, payload: {username, password} };
 }
+
+export function authenticated(user) {
+    return { type: ActionTypes.AUTH_USER, user };
+}
+
+export function unauthenticated() {
+    return { type: ActionTypes.UNAUTH_USER };
+}
+
 
 export function authError(error) {
     return { type: ActionTypes.AUTH_ERROR, payload: error };

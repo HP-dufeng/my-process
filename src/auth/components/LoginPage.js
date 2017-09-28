@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
@@ -6,7 +7,20 @@ import Grid from 'material-ui/Grid';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import lightBlue from 'material-ui/colors/lightBlue';
+
+import * as actions from '../actions/authActions';
 class LoginPage extends Component {
+
+  constructor(props, context) {
+    super(props, context);
+
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit(values) {
+    this.props.signinUser({username:'admin', password: '111111'});
+}
+
   render() {
     const classes = this.props.classes;
 
@@ -33,7 +47,7 @@ class LoginPage extends Component {
                 autoComplete="current-password"
                 margin="normal"
               />
-              <Button raised color="primary" className={classes.button}>
+              <Button raised color="primary" className={classes.button} onClick= {this.onSubmit}>
                 Subscribe
               </Button>
               </form>
@@ -109,4 +123,4 @@ const styles = theme => ({
 });
 
 
-export default withStyles(styles)(LoginPage);
+export default connect(null, actions)(withStyles(styles)(LoginPage));

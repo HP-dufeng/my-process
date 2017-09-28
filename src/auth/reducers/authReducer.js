@@ -5,7 +5,7 @@ import initialState from './initialState';
 export default function(state = initialState, action) {
     switch (action.type) {
       case ActionTypes.AUTH_USER:
-        return {...state, authenticated: true };
+        return {...state, authenticated: true, user: action.user };
       case ActionTypes.UNAUTH_USER: 
         return { ...state, authenticated: false };
     }
