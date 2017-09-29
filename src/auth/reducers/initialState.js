@@ -1,5 +1,5 @@
 
 export default {
-    authenticated: false,
+    authenticated: null,
     user: {},
 };

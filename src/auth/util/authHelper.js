@@ -1,5 +1,5 @@
 import Rx from 'rxjs/Rx';
-import * as auth from './authRequest';
+import * as auth from '../authRequest';
 
 export const isAuthenticated = () => {
     return auth.getAccount()

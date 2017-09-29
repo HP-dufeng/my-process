@@ -4,68 +4,72 @@ import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
-import TextField from 'material-ui/TextField';
-import Button from 'material-ui/Button';
-import lightBlue from 'material-ui/colors/lightBlue';
+import purple from 'material-ui/colors/purple';
 
-import * as actions from '../actions/authActions';
+import LoginForm from './LoginForm';
+
+
 class LoginPage extends Component {
-
   constructor(props, context) {
     super(props, context);
-
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit(values) {
-    this.props.signinUser({username:'admin', password: '111111'});
-}
+  // componentWillMount() {
+  //   const { from } = this.props.location.state || { from: { pathname: '/' } };
+  //   const { authenticated } = this.props;
+  //   if(authenticated){
+  //       return (
+  //           <Redirect to={from}/>
+  //       );
+  //   }
+  // }
 
   render() {
     const classes = this.props.classes;
 
     return(
-      <Grid container direction={'row'} justify={'center'} className={classes.root}>
-        <Grid item>
-          <Paper className={classes.paper} elevation={4}>
-            <div className={classes.header}>
-              <Typography className={classes.typography} type="display1">Welcome</Typography>
-            </div>
-            <div className={classes.section}>
-              <form className={classes.from}>
-              <TextField
-                label="Username"
-                placeholder="Username"
-                className={classes.username}
-                margin="normal"
-              />
-              <TextField
-                id="password"
-                label="Password"
-                className={classes.password}
-                type="password"
-                autoComplete="current-password"
-                margin="normal"
-              />
-              <Button raised color="primary" className={classes.button} onClick= {this.onSubmit}>
-                Subscribe
-              </Button>
-              </form>
-            </div>
-            <div className={classes.footer}>
-              <Typography  className={classes.typography} type="body1" gutterBottom>
-                Powered by feng.du
-              </Typography>
-            </div>
-          </Paper>
-        </Grid>
+      <LoginForm />
+    //   <Grid container direction={'row'} justify={'center'} className={classes.root}>
+    //     <Grid item>
+    //       <Paper className={classes.paper} elevation={4}>
+    //         <div className={classes.header}>
+    //           <Typography className={classes.typography} type="display1">Welcome</Typography>
+    //         </div>
+    //         <div className={classes.section}>
+    //           <form className={classes.from}>
+    //           <TextField
+    //             label="Username"
+    //             placeholder="Username"
+    //             className={classes.username}
+    //             margin="normal"
+    //           />
+    //           <TextField
+    //             id="password"
+    //             label="Password"
+    //             className={classes.password}
+    //             type="password"
+    //             autoComplete="current-password"
+    //             margin="normal"
+    //           />
+    //           <Button raised color="primary" className={classes.button} onClick= {this.onSubmit}>
+    //             Subscribe
+    //           </Button>
+    //           </form>
+    //         </div>
+    //         <div className={classes.footer}>
+    //           <Typography  className={classes.typography} type="body1" gutterBottom>
+    //             Powered by feng.du
+    //           </Typography>
+    //         </div>
+    //       </Paper>
+    //     </Grid>
       
-    </Grid>
+    // </Grid>
     );
   }
 }
 
-const basisColor = lightBlue['200'];
+const basisColor = purple['A100'];
 
 const styles = theme => ({
   root:{
@@ -122,5 +126,10 @@ const styles = theme => ({
   }
 });
 
+function mapStateToProps(state) {
+  return { 
+      authenticated: state.auth.authenticated
+  };
+}
 
-export default connect(null, actions)(withStyles(styles)(LoginPage));
+export default connect(mapStateToProps)(withStyles(styles)(LoginPage));

@@ -6,20 +6,19 @@ import {
 } from 'react-router-dom';
 
 class AuthRoute extends React.Component {
+
     render() {
         const { component: Component, authenticated, ...rest } = this.props;
-
         return (
-            <Route {...rest} render={props => (
-                authenticated ? (
-                <Component {...props}/>
-                ) : (
-                <Redirect to={{
-                    pathname: '/login',
-                    state: { from: props.location }
-                }}/>
-                )
-          )}/>
+            <Route {...rest} render={props => {
+                if(authenticated)
+                    return <Component {...props}/>;
+                else if (authenticated === false) {
+                    return <Redirect to={{ pathname: '/login', state: { from: props.location } }}/>;
+                } else {
+                    return null;
+                }
+            }}/>
         );
     }
 }

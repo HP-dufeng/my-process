@@ -8,6 +8,8 @@ export default function(state = initialState, action) {
         return {...state, authenticated: true, user: action.user };
       case ActionTypes.UNAUTH_USER: 
         return { ...state, authenticated: false };
+      case ActionTypes.AUTH_ERROR:
+        return { ...state, error: action.error };
     }
   
     return state;

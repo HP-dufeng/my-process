@@ -18,5 +18,5 @@ export function unauthenticated() {
 
 
 export function authError(error) {
-    return { type: ActionTypes.AUTH_ERROR, payload: error };
+    return { type: ActionTypes.AUTH_ERROR, error };
 }

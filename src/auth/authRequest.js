@@ -3,7 +3,7 @@
  */
 import Rx from 'rxjs/Rx';
 import { ajax } from 'rxjs/observable/dom/ajax';
-import * as cache from './cache_token';
+import * as cache from './util/cache_token';
 import AuthApi from './api/AuthApi';
 import config from './config';
 

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm} from 'redux-form';
+import TextField from 'material-ui/TextField'
+import Button from 'material-ui/Button';
+import { FormHelperText } from 'material-ui/Form';
 
 import * as actions from '../actions/authActions';
 
@@ -12,15 +15,14 @@ class LoginForm extends Component {
     }
 
     onSubmit(values) {
-        // this.props.signinUser(values);
-        this.props.checkIsLogin();
+        this.props.signinUser(values);
     }
 
     renderError() {
         const { errorMessage } = this.props;
 
         return (
-            errorMessage && <p className="login-error">{errorMessage}</p>
+            errorMessage && <FormHelperText error>{errorMessage}</FormHelperText>
         );
     }
 
@@ -28,17 +30,17 @@ class LoginForm extends Component {
         const { handleSubmit, submitting } = this.props;
 
         return(
-            <form className="form clearfix login-form" role="form" onSubmit={handleSubmit(this.onSubmit)}>
-                <div className="form-group">
-                    <Field name="username" type="text" className="form-control" component="input"/>
+            <form onSubmit={handleSubmit(this.onSubmit)}>
+                <div>
+                    <Field name="username" component={({input})=><TextField label="username" placeholder="Username" {...input} />}/>
                 </div>
-                <div className="form-group">
-                    <Field type="password" className="form-control" name="password" component="input"/>
+                <div >
+                    <Field name="password" component={({input})=><TextField label="Password" type="password"  {...input} />}/>
                 </div>
-                <div className="btn-group pull-right">
-                    <button id="login" type="submit" className="btn btn-default" disabled={submitting} >
+                <div >
+                    <Button raised color="primary" type="submit" disabled={submitting} >
                         Sign in
-                    </button>
+                    </Button>
                 </div>
                 {this.renderError()}
             </form>

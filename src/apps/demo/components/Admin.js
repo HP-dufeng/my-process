@@ -1,7 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-import {checkIsLogin} from '../../auth/actions/authActions';
 
 class Admin extends React.Component {
 

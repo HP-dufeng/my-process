@@ -1,0 +1,1 @@
+ export { default as BpmnManagePage } from './bpmn/BpmnManagePage';

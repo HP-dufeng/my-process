@@ -9,8 +9,6 @@ import MenuIcon from 'material-ui-icons/Menu';
 import Drawer from 'material-ui/Drawer';
 
 
-
-import { NavLink } from 'react-router-dom';
 class Demo extends React.Component {
 
   constructor(props) {
